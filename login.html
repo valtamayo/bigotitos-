@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="animalitos.jpg" alt="animalitos" width="50" height="50">
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+          <li><a href="index.html#services">Servicios</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="mostrar.php">Ver datos</a></li>
+          <li><button id="theme-toggle-btn" class="theme-toggle-btn">☀️</button></li>
+        </ul>
+      </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Escuela de Mascotas</button></center>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="guardardat.php" method="post">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Registra a tu mascota!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="id-mascota" class="col-form-label">ID de la mascota:</label>
+            <input type="text" class="form-control" id="id-mascota" name="id_mascota" required>
+          </div>
+          <div class="mb-3">
+            <label for="nombre-mascota" class="col-form-label">Nombre de la mascota:</label>
+            <input type="text" class="form-control" id="nombre-mascota" name="nombre_mascota" required>
+          </div>
+          <div class="mb-3">
+            <label for="tipo-animal" class="col-form-label">Tipo de animal:</label>
+            <select class="form-select" id="tipo-animal" name="tipo_animal" required>
+              <option selected disabled value="">Selecciona una opción</option>
+              <option value="Perro">Perro</option>
+              <option value="Gato">Gato</option>
+              <option value="Conejo">Conejo</option>
+              <option value="Hámster">Hámster</option>
+              <option value="Pájaro">Pájaro</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="raza-mascota" class="col-form-label">Raza:</label>
+            <input type="text" class="form-control" id="raza-mascota" name="raza">
+          </div>
+          <div class="mb-3">
+            <label for="edad-mascota" class="col-form-label">Edad (años):</label>
+            <input type="number" class="form-control" id="edad-mascota" name="edad" min="0">
+          </div>
+          <hr>
+          <div class="mb-3">
+            <label for="nombre-dueno" class="col-form-label">Nombre del dueño:</label>
+            <input type="text" class="form-control" id="nombre-dueno" name="nombre_dueno" required>
+          </div>
+          <div class="mb-3">
+            <label for="telefono-dueno" class="col-form-label">Teléfono de contacto:</label>
+            <input type="tel" class="form-control" id="telefono-dueno" name="telefono_dueno" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Guardar datos</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

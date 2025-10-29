@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pag-bigotitos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <img src="animalitos.jpg" alt="animalitos" width="50" height="50">
+    <ul class="nav-links">
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="tienda.html">Tienda</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="mostrar.php">Ver datos</a></li>
+
+      <li><button id="theme-toggle-btn" class="theme-toggle-btn">☀️</button></li>
+    </ul>
+  </nav>
+
+  
+  <header class="hero" id="hero"></header>
+
+  <main>
+    <div class="carousel-wrapper">
+      <div class="hero-content">
+        <h1>Bigotitos</h1>
+        <h2>el mejor lugar para tus mascotas!</h2>
+      </div>
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <div class="slider-container">
+        <div class="slider" id="slider">
+          <div class="slide"><img src="perros blue.jpeg" alt="Perros Blue"></div>
+          <div class="slide"><img src="descargar.jpeg" alt="Descargar"></div>
+          <div class="slide"><img src="descargar (1).jpeg" alt="Descargar 1"></div>
+          <div class="slide"><img src="descargar (2).jpeg" alt="Descargar 2"></div>
+        </div>
+      </div>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <section id="services" class="content-section">
+      <h3>Nuestros Servicios</h3>
+      <div class="services-container">
+        <div class="service-card">
+          <h4>Peluquería</h4>
+          <p>Cortes de raza, baños medicados y peinados con estilo.</p>
+        </div>
+        <div class="service-card">
+          <h4>Guardería</h4>
+          <p>Un espacio seguro y divertido para tu mascota mientras no estás.</p>
+        </div>
+        <div class="service-card">
+          <h4>Adiestramiento</h4>
+          <p>Clases de obediencia básica y avanzada con refuerzo positivo.</p>
+        </div>
+      </div>
+    </section>
+    <section class="que-hacemos content-section">
+      <div class="contenedor">
+        <div class="imagen">
+          <img src="descargar (2).jpeg" alt="Perro feliz" />
+        </div>
+        <div class="contenido">
+          <h3 class="subtitulo">Bigotitos!🐾</h3>
+          <h2 class="titulo">¿Qué hacemos?</h2>
+          <p class="descripcion">
+            Nos dedicamos a crear vínculos de amor que duran toda la vida.
+            Criamos cachorros sanos, felices y equilibrados, con el propósito de
+            convertirlos en el nuevo integrante de tu familia. 
+            Tenemos muchas actividades para todo tipo de animalitos, en bigotitos simepre buscaremos
+            la felicidad de tu mascota. 
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>Instagram: <a href="https://www.instagram.com/valen_t030" target="_blank">@valen_t030</a></p>
+    <p>Teléfono: 3113473926</p>
+    <p>Correo: valentamayouco@gmail.com</p>
+    <p>&copy; 2025 Bigotitos. Todos los derechos reservados.</p>
+  </footer>
+
+  <div id="overlay" class="overlay"></div>
+
+  <script src="theme-switcher.js"></script>
+  <script>
+    let indiceDiapositiva = 0;
+    const diapositivas = document.querySelectorAll('.slide');
+    const carrusel = document.getElementById('slider');
+    const totalDiapositivas = diapositivas.length;
+    let intervaloCarrusel;
+
+    function mostrarDiapositiva(n) {
+      indiceDiapositiva = (n + totalDiapositivas) % totalDiapositivas;
+      if (carrusel) {
+        const anchoDiapositiva = carrusel.parentElement.offsetWidth;
+        const desplazamiento = -indiceDiapositiva * anchoDiapositiva;
+        carrusel.style.transform = `translateX(${desplazamiento}px)`;
+      }
+      reiniciarTemporizador();
+    }
+
+    function moverDiapositiva(n) {
+      mostrarDiapositiva(indiceDiapositiva + n);
+    }
+
+    function iniciarCarruselAutomatico() {
+      intervaloCarrusel = setInterval(() => {
+        moverDiapositiva(1);
+      }, 4000);
+    }
+
+    function reiniciarTemporizador() {
+      clearInterval(intervaloCarrusel);
+      iniciarCarruselAutomatico();
+    }
+
+    mostrarDiapositiva(indiceDiapositiva);
+    iniciarCarruselAutomatico();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const serviceCards = document.querySelectorAll('.service-card');
+      const overlay = document.getElementById('overlay');
+ 
+      serviceCards.forEach(card => {
+        card.addEventListener('click', (event) => {
+          // Evita que el clic en el overlay se active si ya está enfocado
+          if (card.classList.contains('focused')) return;
+ 
+          event.stopPropagation(); // Detiene la propagación del clic
+          overlay.style.display = 'block'; // Muestra el fondo oscuro
+          card.classList.add('focused'); // Enfoca la tarjeta
+        });
+      });
+ 
+      overlay.addEventListener('click', () => {
+        document.querySelector('.service-card.focused')?.classList.remove('focused'); // Quita el foco
+        overlay.style.display = 'none'; // Oculta el fondo
+      });
+    });
+  </script>
+</body>
+</html>
